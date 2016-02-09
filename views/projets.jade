@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  .content(ng-controller="MainCtrl")
+    .projet-wrapper(style="display: flex; flex-wrap: wrap;")
+      .projet(style="padding: 20px; width: 400px;" ng-repeat="projet in projets")
+        h1 {{projet.name}}
+        small Référence: {{projet.reference}}
+        h4 Description
+        p {{projet.description}}
+        h6(align="right") En partenariat avec {{projet.partner}}
+        br
+        br
+        button(type="button" class="btn btn-warning" ng-click="modifyProjet(projet)") Modifier
+        button(type="button" class="btn btn-danger" ng-click="deleteProjet(projet)") Supprimer
+      br
+      br
+      br
+    h2 Nouveau projet
+    form(name="addProjetForm")
+      input(type="hidden" ng-model="newProjet._id")
+      br
+      label Nom:
+      input(type="text" placeholder="Nom du projet" ng-model="newProjet.name" required)
+      br
+      label Référence:
+      input(type="text" placeholder="Exemple: LOG30554" ng-model="newProjet.reference" required)
+      br
+      label Partenaire:
+      input(type="text" placeholder="Partenaire" ng-model="newProjet.partner" required)
+      br
+      label Description:
+      textarea(rows=4 cols=50 placeholder="Informations sur le projet" ng-model="newProjet.description" required)
+      br
+      label Type:
+      br
+      input(type="radio" name="type" value="logements" ng-model="newProjet.family" checked) 
+      |  Logement
+      br
+      input(type="radio" name="type" value="industriel" ng-model="newProjet.family") 
+      |  Industriel
+      br
+      input(type="radio" name="type" value="bat-public" ng-model="newProjet.family") 
+      |  Bâtiment public
+      br
+      br
+      button(type="button" class="btn btn-success" ng-click="addProjet()" ng-disabled="!addProjetForm.$valid") Ajouter

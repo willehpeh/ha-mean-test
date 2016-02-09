@@ -1,0 +1,14 @@
+doctype html
+html(ng-app="app")
+  head
+    title= title
+    link(rel='stylesheet' href='/libs/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/libs/animate.css/animate.min.css')
+    link(rel='stylesheet' href='/libs/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+  script(src='/libs/angular/angular.min.js')
+  script(src='/libs/angular-route/angular-route.min.js')
+  script(src='/libs/jquery/dist/jquery.min.js')
+  script(src='/js/app.js')
